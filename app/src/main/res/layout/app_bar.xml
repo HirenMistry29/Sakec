@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3A4380">
+
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SAKEC"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="@dimen/_25pxh"
+                     />
+
+                <ImageView
+                    android:id="@+id/editprofile"
+                    android:layout_width="@dimen/_50pxh"
+                    android:layout_height="@dimen/_35pxh"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    app:srcCompat="@drawable/profile" />
+
+
+            </FrameLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include layout="@layout/toolbar_content" />
+
+</LinearLayout>

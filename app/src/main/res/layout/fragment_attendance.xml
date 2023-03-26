@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".attendance.Attendance"
+    android:background="@drawable/gradient2">
+
+<!--     TODO: Update blank fragment layout -->
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_650pxh"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/BarChart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="refresh"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.879"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4" />
+
+    <LinearLayout
+        android:layout_width="@dimen/_280pxh"
+        android:layout_height="@dimen/_100pxv"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/_40pxh"
+        android:orientation="vertical">
+    <TextView
+        android:id="@+id/math"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Math"
+        android:textSize="@dimen/_15pxh"
+        android:textColor="@color/white"
+      />
+
+        <TextView
+            android:id="@+id/OS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OS"
+            android:textSize="@dimen/_15pxh"
+            android:textColor="@color/white"
+             />
+
+        <TextView
+            android:id="@+id/DBMS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DBMS"
+            android:textSize="@dimen/_15pxh"
+            android:textColor="@color/white"
+            />
+
+        <TextView
+            android:id="@+id/MP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MP"
+            android:textSize="@dimen/_15pxh"
+            android:textColor="@color/white"
+            />
+        <TextView
+            android:id="@+id/AOA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AOA"
+            android:textSize="@dimen/_15pxh"
+            android:textColor="@color/white"
+            />
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

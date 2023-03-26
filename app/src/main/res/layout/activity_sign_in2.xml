@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".signin.SignIn"
+    android:background="@drawable/gradient">
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/security"
+        android:layout_width="@dimen/_280pxh"
+        android:layout_height="@dimen/_280pxh"
+        app:layout_constraintBottom_toTopOf="@+id/etMiddlename"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.764"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/security"></com.airbnb.lottie.LottieAnimationView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="@dimen/_20pxh"
+        android:text="Forget Password?"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/log"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.996"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEmail"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/linetwo"
+        android:layout_width="170dp"
+        android:layout_height="@dimen/_1pxv"
+        android:layout_marginStart="5dp"
+        android:layout_weight="0.40"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintHorizontal_bias="0.352"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Create1"
+        app:layout_constraintVertical_bias="0.265" />
+
+    <EditText
+        android:id="@+id/etMiddlename"
+
+        style="@style/etRoundedOutline"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20pxh"
+        android:layout_marginEnd="@dimen/_20pxh"
+        android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+        android:ellipsize="end"
+        android:hint="@string/email"
+
+        android:inputType="textEmailAddress"
+        android:paddingStart="@dimen/_15pxh"
+        android:paddingTop="@dimen/_17pxv"
+
+        android:paddingEnd="@dimen/_30pxh"
+        android:paddingBottom="@dimen/_13pxv"
+        android:singleLine="true"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/etEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.943"
+        tools:ignore="Autofill" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kumbhsansbold"
+        android:text="OR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/log"
+        app:layout_constraintVertical_bias="0.329" />
+
+    <EditText
+        android:id="@+id/etEmail"
+
+        style="@style/etRoundedOutline"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20pxh"
+        android:layout_marginEnd="@dimen/_20pxh"
+        android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+        android:ellipsize="start"
+        android:hint="@string/password"
+        android:inputType="numberPassword"
+        android:paddingStart="@dimen/_15pxh"
+        android:paddingTop="@dimen/_17pxv"
+        android:paddingEnd="@dimen/_30pxh"
+        android:paddingBottom="@dimen/_13pxv"
+        android:singleLine="true"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.593"
+        tools:ignore="Autofill" />
+
+    <androidx.appcompat.widget.AppCompatButton
+
+        android:id="@+id/log"
+
+        style="@style/CardView.Light"
+        android:layout_width="@dimen/_250pxh"
+        android:layout_height="@dimen/_40pxh"
+
+        android:background="#fff"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:paddingStart="@dimen/_30pxh"
+        android:paddingTop="@dimen/_5pxv"
+        android:paddingEnd="@dimen/_30pxh"
+        android:paddingBottom="@dimen/_5pxv"
+        android:singleLine="true"
+        android:text="Log In"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+
+        android:textSize="@dimen/_15pxh"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEmail"
+        app:layout_constraintVertical_bias="0.164" />
+
+    <TextView
+        android:id="@+id/Create1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don't have an account?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.368"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/log"
+        app:layout_constraintVertical_bias="0.028" />
+
+    <View
+        android:id="@+id/lineone"
+        android:layout_width="170dp"
+        android:layout_height="@dimen/_1pxv"
+        android:layout_marginEnd="5dp"
+        android:layout_weight="0.40"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/Create1"
+        app:layout_constraintVertical_bias="0.282" />
+
+    <TextView
+        android:id="@+id/Create2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Create One"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Create1"
+        app:layout_constraintTop_toBottomOf="@+id/log"
+        app:layout_constraintVertical_bias="0.028" />
+
+    <ImageView
+        android:id="@+id/google"
+        android:layout_width="353dp"
+        android:layout_height="41dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.243"
+        app:srcCompat="@drawable/google" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

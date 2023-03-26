@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/navigationdrawer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".studentdashboard.StudentProfile"
+    tools:openDrawer="start"
+    android:background="@drawable/gradient2">
+
+    <include layout="@layout/app_bar"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        />
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigate"
+        android:background="#A1091137"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/navigation"
+        app:menu="@menu/navigation_items"
+        >
+
+    </com.google.android.material.navigation.NavigationView>
+
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

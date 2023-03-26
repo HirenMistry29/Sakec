@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <string name="app_name">SAKEC</string>
+    <string name="loading">Loading…</string>
+    <string name="no_internet_connection">No internet connection!</string>
+    <string name="msg_welcome_to_sake">STUDENT DETAILS</string>
+    <string name="lbl_continue">Update</string>
+    <string name="lbl_roll_no">Roll No.</string>
+    <string name="lbl_mobile_number">Mobile number </string>
+    <string name="msg_sakec_email_add">Sakec Email Address </string>
+    <string name="lbl_branch">Branch</string>
+    <string name="lbl_middle_name">Middle Name</string>
+    <string name="lbl_last_name">Last Name</string>
+    <string name="msg_enter_the_detai">ENTER THE DETAILS</string>
+    <string name="lbl_first_name">First Name</string>
+    <string name="lbl_div">Div</string>
+    <string name="lbl_class">Class</string>
+    <string name="msg_registration_no">Registration No.</string>
+    <string name="smartcard">Smartcard No.</string>
+    <string name="msg_please_enter_valid_text">Please enter valid text</string>
+
+    // Sign In Page
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+
+    //Navigation Drawer
+    <string name="OpenDrawer">Open Navigation Drawer</string>
+    <string name="CloseDrawer">Close Navigation Drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //drop down list branch
+    <string-array name="branch">
+        <item>Select Branch</item>
+        <item>Computer Engineering</item>
+        <item>Information technology</item>
+        <item>Artificial Inteligence and Data Science</item>
+        <item>Cyber Security</item>
+        <item>Electronics and Computer Science</item>
+        <item>Electronics and Telecommunication</item>
+    </string-array>
+
+    <string-array name="year">
+        <item>Year</item>
+        <item>FE</item>
+        <item>SE</item>
+        <item>TE</item>
+        <item>BE</item>
+    </string-array>
+
+</resources>
+

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".attendance.admin_attendance"
+    android:background="@drawable/gradient2">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       android:layout_marginTop="@dimen/_100pxh"
+       android:layout_marginEnd="@dimen/_50pxh"
+       android:layout_marginStart="@dimen/_50pxh"
+       android:layout_marginBottom="@dimen/_50pxh">
+
+
+       <EditText
+           android:id="@+id/math"
+           android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_50pxh"
+           android:ems="10"
+           android:inputType="number"
+           android:hint="MATH"
+           android:paddingStart="@dimen/_15pxh"
+           android:layout_marginTop="50dp" />
+
+       <EditText
+           android:id="@+id/os"
+           android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_50pxh"
+           android:ems="10"
+           android:inputType="number"
+           android:hint="OS"
+           android:paddingStart="@dimen/_15pxh"
+           android:layout_marginTop="10dp" />
+
+       <EditText
+           android:id="@+id/dbms"
+           android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_50pxh"
+           android:ems="10"
+           android:inputType="number"
+           android:hint="DBMS"
+           android:paddingStart="@dimen/_15pxh"
+           android:layout_marginTop="10dp" />
+
+       <EditText
+           android:id="@+id/mp"
+           android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_50pxh"
+           android:ems="10"
+           android:inputType="number"
+           android:hint="MP"
+           android:paddingStart="@dimen/_15pxh"
+           android:layout_marginTop="10dp" />
+
+       <EditText
+           android:id="@+id/aoa"
+           android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_50pxh"
+           android:ems="10"
+           android:inputType="number"
+           android:hint="AOA"
+           android:paddingStart="@dimen/_15pxh"
+           android:layout_marginTop="10dp" />
+
+       <Button
+           android:id="@+id/update"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="update"
+           android:layout_marginTop="@dimen/_30pxh"
+           android:layout_marginStart="@dimen/_50pxh"
+           android:layout_marginEnd="@dimen/_50pxh"/>
+
+
+   </LinearLayout>
+
+
+</FrameLayout>

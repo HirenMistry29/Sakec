@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "453104077753",
+    "project_id": "sakec3-e8d53",
+    "storage_bucket": "sakec3-e8d53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453104077753:android:9451dab5a06c25a22cc468",
+        "android_client_info": {
+          "package_name": "com.example.sakec3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453104077753-maogpgd3gs80m2ulj67a825909gkcfoa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAn8sl410Se__2m9CfEANyixyANexzngbg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453104077753-maogpgd3gs80m2ulj67a825909gkcfoa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

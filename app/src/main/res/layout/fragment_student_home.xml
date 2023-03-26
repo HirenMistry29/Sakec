@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StudentHome"
+    android:background="@drawable/gradient2">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="@dimen/_350pxh"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/kumbhsans"
+        android:gravity="center"
+        android:singleLine="false"
+        android:text="welcome to Sakec"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_50pxh"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/studentname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_90pxh"
+        android:textSize="30dp"
+        android:textStyle="bold"/>
+
+
+</FrameLayout>

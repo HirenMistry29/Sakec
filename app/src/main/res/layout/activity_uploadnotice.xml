@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".uploadnotice"
+    android:background="@drawable/gradient2"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/addimage"
+        android:layout_width="@dimen/_50pxh"
+        android:layout_height="@dimen/_50pxh"
+        android:src="@drawable/ic_baseline_add_a_photo_24"
+        android:layout_marginTop="@dimen/_80pxh"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintVertical_bias="0.098" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="@dimen/_350pxh"
+        android:layout_height="@dimen/_50pxh"
+        android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+      android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_10pxh">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/imagetitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Title"
+            android:paddingStart="20dp"
+            android:textColorHint="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:id="@+id/uploadimg"
+        android:layout_width="@dimen/_350pxh"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20pxh"
+        android:layout_gravity="center_horizontal"
+        android:text="Upload" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_300pxh"
+            android:layout_height="@dimen/_300pxh"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_20pxh">
+            <ImageView
+                android:id="@+id/showimage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+
+                />
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+</LinearLayout>
