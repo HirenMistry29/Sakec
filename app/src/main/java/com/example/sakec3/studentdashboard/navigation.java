@@ -1,4 +1,4 @@
-package com.example.sakec3;
+package com.example.sakec3.studentdashboard;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.sakec3.R;
 import com.example.sakec3.studentdetails.studentdetails;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

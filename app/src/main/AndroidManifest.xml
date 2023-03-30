@@ -16,13 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
-        <activity
-            android:name=".AddEvent"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".teacher.teacherdashboard"
             android:exported="false">
@@ -52,7 +46,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".navigation"
+            android:name=".studentdashboard.navigation"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

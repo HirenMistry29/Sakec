@@ -1,24 +1,37 @@
 package com.example.sakec3.Events;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.sakec3.R;
 
-public class AddEvent extends AppCompatActivity {
+
+public class AddEvents extends Fragment {
     EditText content;
+
+    public AddEvents() {
+        // Required empty public constructor
+    }
+
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_event);
-        content = findViewById(R.id.content);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View v =  inflater.inflate(R.layout.fragment_add_events, container, false);
+        content = v.findViewById(R.id.content);
         content.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
+
                 if (view.getId()==R.id.content)
                 {
                     view.getParent().requestDisallowInterceptTouchEvent(true);
@@ -28,7 +41,8 @@ public class AddEvent extends AppCompatActivity {
                     }
                 }
                 return false;
-             }
+            }
         });
+        return v;
     }
 }
