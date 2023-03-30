@@ -31,14 +31,14 @@ public class TeacherLogin extends AppCompatActivity {
                 String emailid = email.getText().toString();
                 String pass = password.getText().toString();
                 String empno = employeeid.getText().toString();
-
-                if(empno.equals("1234") && pass.equals("1234") && emailid.equals("faculty") ){
-                    startActivity(new Intent(TeacherLogin.this , teacherdashboard.class));
-                    finish();
-                }
-                else{
-                    Toast.makeText(TeacherLogin.this, "error", Toast.LENGTH_SHORT).show();
-                }
+                startActivity(new Intent(TeacherLogin.this , teacherdashboard.class));
+//                if(empno.equals("1234") && pass.equals("1234") && emailid.equals("faculty") ){
+//                    startActivity(new Intent(TeacherLogin.this , teacherdashboard.class));
+//                    finish();
+//                }
+//                else{
+//                    Toast.makeText(TeacherLogin.this, "error", Toast.LENGTH_SHORT).show();
+//                }
 
             }
         });

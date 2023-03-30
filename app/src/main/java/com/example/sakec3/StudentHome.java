@@ -9,21 +9,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.checkerframework.checker.units.qual.A;
+
+import java.util.ArrayList;
+
 public class StudentHome extends Fragment {
+
     public TextView person;
     FirebaseFirestore dbroot;
 
 
 
     public StudentHome() {
+
         // Required empty public constructor
     }
 
@@ -34,10 +42,18 @@ public class StudentHome extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_student_home, container, false);
 
-         person = view.findViewById(R.id.studentname);
+        //ImageSlider
+        ImageSlider imageSlider = view.findViewById(R.id.imageslider);
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel(R.drawable.award, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.award1, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.naac, ScaleTypes.FIT));
+
+        imageSlider.setImageList(slideModels,ScaleTypes.FIT);
+
+//         person = view.findViewById(R.id.studentname);
          dbroot = FirebaseFirestore.getInstance();
 //        fetchData();
-
 
         return view;
     }

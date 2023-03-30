@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.sakec3.Events.upload_events;
 import com.example.sakec3.R;
 import com.example.sakec3.StudentHome;
 import com.example.sakec3.attendance.admin_attendance;
@@ -60,7 +61,11 @@ public class teacherdashboard extends AppCompatActivity {
                 } else if (id == R.id.studentchapter) {
 //                    LoadFragment(new StudentChapter(),1);
                         startActivity(new Intent(teacherdashboard.this , teachersignin.class));
-                } else if (id == R.id.logout){
+                }
+                else if (id== R.id.Events){
+                        LoadFragment(new upload_events(),1);
+                }
+                else if (id == R.id.logout){
                     FirebaseAuth.getInstance().signOut();
                     startActivity(new Intent(teacherdashboard.this , teachersignin.class));
 
@@ -98,9 +103,5 @@ public class teacherdashboard extends AppCompatActivity {
             ft.replace(R.id.container , fragment);
         }
         ft.commit();
-
-
     }
-
-
 }

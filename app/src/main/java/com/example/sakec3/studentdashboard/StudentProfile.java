@@ -52,7 +52,7 @@ public class StudentProfile extends AppCompatActivity {
         drawer = findViewById(R.id.navigationdrawer);
         navigate = findViewById(R.id.navigate);
         toolbar = findViewById(R.id.toolbar);
-        person = findViewById(R.id.studentname);
+//        person = findViewById(R.id.studentname);
         editprofile = findViewById(R.id.editprofile);
 
 
@@ -97,8 +97,12 @@ public class StudentProfile extends AppCompatActivity {
 
                 } else if (id == R.id.studentchapter) {
                     LoadFragment(new StudentChapter(),1);
+                }
+                else if(id == R.id.Events){
 
-                } else if (id == R.id.logout){
+                }
+
+                else if (id == R.id.logout){
                     FirebaseAuth.getInstance().signOut();
                     startActivity(new Intent(StudentProfile.this , SignIn2.class));
 

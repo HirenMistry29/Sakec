@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Events.upload_events"
+    android:background="@drawable/gradient2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20pxh"
+        android:layout_marginEnd="@dimen/_20pxh"
+        android:orientation="vertical">
+
+        <EditText
+            android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_40pxh"
+            android:textSize="@dimen/_15pxh"
+            android:hint="Title"
+            android:paddingBottom="@dimen/_13pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_15pxh"
+            android:paddingTop="@dimen/_17pxv"
+            android:textColor="@color/white"/>
+
+
+        <EditText
+            android:id="@+id/content"
+            android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20pxh"
+            android:textSize="@dimen/_12pxh"
+            android:hint="Content"
+            android:paddingBottom="@dimen/_13pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_15pxh"
+            android:paddingTop="@dimen/_17pxv"
+            android:maxLines="30"
+            android:inputType="textMultiLine"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:textColor="@color/white"/>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_80pxv"
+            android:layout_marginTop="@dimen/_30pxh"
+            android:orientation="horizontal">
+            <ImageView
+                android:background="@color/white"
+                android:layout_width="@dimen/_110pxh"
+                android:layout_height="@dimen/_2pxh"
+                android:src="@drawable/line_2_shape"
+                android:layout_marginTop="@dimen/_40pxh"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CONTACT DETAILS"
+                android:layout_marginTop="@dimen/_30pxh"
+                android:layout_marginStart="@dimen/_15pxh" />
+
+            <ImageView
+                android:background="@color/white"
+                android:layout_width="@dimen/_120pxh"
+                android:layout_height="@dimen/_2pxh"
+                android:src="@drawable/line_2_shape"
+                android:layout_marginTop="@dimen/_40pxh"
+                android:layout_marginStart="@dimen/_15pxh"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_15pxh"
+                android:hint="Name 1"
+                android:paddingBottom="@dimen/_13pxv"
+                android:paddingEnd="@dimen/_30pxh"
+                android:paddingStart="@dimen/_15pxh"
+                android:paddingTop="@dimen/_17pxv"
+                android:textColor="@color/white"/>
+            <EditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_15pxh"
+                android:hint="Mobile No."
+                android:paddingBottom="@dimen/_13pxv"
+                android:paddingEnd="@dimen/_30pxh"
+                android:paddingStart="@dimen/_15pxh"
+                android:paddingTop="@dimen/_17pxv"
+                android:textColor="@color/white"
+                android:maxLength="10"
+                android:inputType="phone"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20pxh"
+            android:orientation="vertical">
+
+            <EditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_15pxh"
+                android:hint="Name 1"
+                android:paddingBottom="@dimen/_13pxv"
+                android:paddingEnd="@dimen/_30pxh"
+                android:paddingStart="@dimen/_15pxh"
+                android:paddingTop="@dimen/_17pxv"
+                android:textColor="@color/white"/>
+            <EditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_15pxh"
+                android:hint="Mobile No."
+                android:paddingBottom="@dimen/_13pxv"
+                android:paddingEnd="@dimen/_30pxh"
+                android:paddingStart="@dimen/_15pxh"
+                android:paddingTop="@dimen/_17pxv"
+                android:textColor="@color/white"
+                android:maxLength="10"
+                android:inputType="phone"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_15pxh"
+            android:hint="Registration Link"
+            android:paddingBottom="@dimen/_13pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_15pxh"
+            android:paddingTop="@dimen/_17pxv"
+            android:layout_marginTop="@dimen/_20pxh"
+            android:textColor="@color/white"
+            android:inputType="textUri"
+            />
+
+    </LinearLayout>
+</ScrollView>
