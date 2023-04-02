@@ -44,6 +44,8 @@ FloatingActionButton fab;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                Intent intent = new Intent(getActivity(), StudentHome.class);
+//                startActivity(intent);
                 LoadFragment(new AddEvents(),1);
             }
         });

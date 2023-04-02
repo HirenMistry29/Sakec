@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.View;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sakec3.Events.Student_Events;
 import com.example.sakec3.R;
 import com.example.sakec3.StudentHome;
 import com.example.sakec3.attendance.Attendance;
@@ -31,6 +33,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
 
 public class StudentProfile extends AppCompatActivity {
     static public DrawerLayout drawer;
@@ -99,6 +105,7 @@ public class StudentProfile extends AppCompatActivity {
                     LoadFragment(new StudentChapter(),1);
                 }
                 else if(id == R.id.Events){
+                    LoadFragment(new Student_Events(),1);
 
                 }
 
@@ -163,6 +170,8 @@ public class StudentProfile extends AppCompatActivity {
             }
         });
     }
+
+
 
 }
 

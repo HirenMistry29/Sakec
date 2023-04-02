@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Events.upload_events"
-    android:background="@drawable/gradient2">
+    android:background="@color/dark">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +13,37 @@
         android:layout_marginEnd="@dimen/_20pxh"
         android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/addimage"
+            android:layout_width="@dimen/_40pxh"
+            android:layout_height="@dimen/_40pxh"
+            android:src="@drawable/ic_baseline_add_a_photo_24"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_40pxh"
+            android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+            />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_350pxh"
+            android:layout_height="@dimen/_250pxh"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_10pxh">
+        <ImageView
+            android:id="@+id/showimage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            />
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
         <EditText
+            android:id="@+id/title"
             android:background="@drawable/rectangle_border_bluegray_100_radius_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,7 +58,7 @@
 
 
         <EditText
-            android:id="@+id/content"
+            android:id="@+id/description"
             android:background="@drawable/rectangle_border_bluegray_100_radius_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,7 +114,7 @@
             android:orientation="vertical">
 
             <EditText
-
+                android:id="@+id/name1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_15pxh"
@@ -95,7 +125,7 @@
                 android:paddingTop="@dimen/_17pxv"
                 android:textColor="@color/white"/>
             <EditText
-
+                android:id="@+id/phn1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_15pxh"
@@ -118,18 +148,18 @@
             android:orientation="vertical">
 
             <EditText
-
+                android:id="@+id/name2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_15pxh"
-                android:hint="Name 1"
+                android:hint="Name 2"
                 android:paddingBottom="@dimen/_13pxv"
                 android:paddingEnd="@dimen/_30pxh"
                 android:paddingStart="@dimen/_15pxh"
                 android:paddingTop="@dimen/_17pxv"
                 android:textColor="@color/white"/>
             <EditText
-
+                android:id="@+id/phn2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_15pxh"
@@ -145,6 +175,7 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/reg"
             android:background="@drawable/rectangle_border_bluegray_100_radius_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -158,6 +189,18 @@
             android:textColor="@color/white"
             android:inputType="textUri"
             />
+
+        <Button
+            android:id="@+id/uploadevent"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40pxh"
+            android:text="UPLOAD"
+            android:textStyle="bold"
+            android:fontFamily="@font/league_spartan"
+            android:textSize="@dimen/_16pxh"
+            android:layout_marginTop="@dimen/_10pxh"
+            android:layout_marginBottom="@dimen/_40pxh"
+            android:background="@color/blueberry"/>
 
     </LinearLayout>
 </ScrollView>

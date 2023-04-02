@@ -22,4 +22,6 @@
 	<color name="bluegray_100">#d9d9d9</color>
 	<color name="black_900_3f">#3f000000</color>
 	<color name="white_A700">#ffffff</color>
+	<color name="dark">#0B2447</color>
+	<color name="blueberry">#19376D</color>
 </resources>
