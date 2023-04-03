@@ -1,5 +1,7 @@
 package com.example.sakec3.Events;
 
+import static java.security.AccessController.getContext;
+
 import android.content.ContentResolver;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,54 +12,62 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 
 import com.example.sakec3.R;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventsViewAdapter> {
-    private Context context;
-    private ArrayList<Eventsgetset> list;
+import de.hdodenhof.circleimageview.CircleImageView;
 
-    public EventsAdapter(Context context, ArrayList<Eventsgetset> list) {
-        this.context = context;
-        this.list = list;
+public class EventsAdapter extends FirebaseRecyclerAdapter<Eventsgetset,EventsAdapter.myViewHolder> {
+
+    /**
+     * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
+     * {@link FirebaseRecyclerOptions} for configuration options.
+     *
+     * @param options
+     */
+    public EventsAdapter(@NonNull FirebaseRecyclerOptions<Eventsgetset> options) {
+        super(options);
+    }
+
+    @Override
+    protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull Eventsgetset model) {
+        //Read Text
+        holder.Title.setText(model.getTitle());
+        holder.Description.setText((model.getDescription()));
+
+        //Read Image
+        Picasso.get()
+                .load(model.getImage())
+                .into(holder.img);
     }
 
     @NonNull
     @Override
-    public EventsViewAdapter onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.eventsfeed,parent,false);
+    public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.eventsfeed,parent,false);
 
-        return new EventsViewAdapter(view);
+        return new myViewHolder(view);
+
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull EventsViewAdapter holder, int position) {
-            Eventsgetset currentevent = list.get(position);
-            holder.eventtitle.setText(currentevent.getTitle());
-        try {
-            if(currentevent.getImage()!=null)
-            Picasso.get().load(currentevent.getImage()).into(holder.eventbanner);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    class myViewHolder extends RecyclerView.ViewHolder{
+        ImageView img;
+        TextView Title , Description;
 
-    @Override
-    public int getItemCount() {
-        return list.size();
-    }
-
-    public class EventsViewAdapter extends RecyclerView.ViewHolder {
-        public TextView eventtitle;
-        public ImageView eventbanner;
-        public EventsViewAdapter(@NonNull View itemView) {
+        public myViewHolder(@NonNull View itemView){
             super(itemView);
-            eventtitle=itemView.findViewById(R.id.eventtitle);
-            eventbanner=itemView.findViewById(R.id.eventbanner);
+
+            img = (ImageView)itemView.findViewById(R.id.eventbanner);
+            Title = (TextView)itemView.findViewById(R.id.eventtitle);
+            Description = (TextView)itemView.findViewById(R.id.description);
 
         }
+
     }
+
 }

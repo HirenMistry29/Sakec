@@ -14,6 +14,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.sakec3.R;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,6 +31,7 @@ public class Student_Events extends Fragment {
     private ProgressBar progress;
     private ArrayList<Eventsgetset> list;
     private EventsAdapter adapter;
+    EventsAdapter EA;
 
     //database
     private DatabaseReference reference;
@@ -45,35 +48,56 @@ public class Student_Events extends Fragment {
 
        View view = inflater.inflate(R.layout.fragment_student__events, container, false);
        eventsrecyclerview = view.findViewById(R.id.eventsrecyclerview);
-       progress=view.findViewById(R.id.progress);
+//       progress=view.findViewById(R.id.progress);
 
-       reference= FirebaseDatabase.getInstance().getReference().child("Events");
+//       reference= FirebaseDatabase.getInstance().getReference().child("Events");
 
        eventsrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-       eventsrecyclerview.setHasFixedSize(true);
 
-       getEvent();
+        FirebaseRecyclerOptions<Eventsgetset> options =
+                new FirebaseRecyclerOptions.Builder<Eventsgetset>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Events"),Eventsgetset.class)
+                        .build();
+
+        EA = new EventsAdapter(options);
+        eventsrecyclerview.setAdapter(EA);
+
+//       eventsrecyclerview.setHasFixedSize(true);
+
+//       getEvent();
 
 
        return view;
     }
 
-    private void getEvent() {
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-                list=new ArrayList<>();
-                for (DataSnapshot snapshot : datasnapshot.getChildren()){
-                    Eventsgetset data = snapshot.getValue(Eventsgetset.class);
-                    list.add(data);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                progress.setVisibility(View.GONE);
-                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
-            }
-        });
+    @Override
+    public void onStart() {
+        super.onStart();
+        EA.startListening();
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EA.stopListening();
+    }
+
+    //    private void getEvent() {
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+//                list=new ArrayList<>();
+//                for (DataSnapshot snapshot : datasnapshot.getChildren()){
+//                    Eventsgetset data = snapshot.getValue(Eventsgetset.class);
+//                    list.add(data);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                progress.setVisibility(View.GONE);
+//                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
 }
