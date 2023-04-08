@@ -4,11 +4,12 @@ public class Eventsgetset {
     public Eventsgetset() {
     }
 
-    String Title , description, name1 , name2 ,phn1 ,phn2,reglink , Image , Date , Time , Key;
+    String Title , description, selectyear , name1 , name2 ,phn1 ,phn2,reglink , Image , Date , Time , Key;
 
-    public Eventsgetset(String title, String description, String name1, String name2, String phn1, String phn2, String reglink, String image, String date, String time, String key) {
+    public Eventsgetset(String title, String description,String selectyear, String name1, String name2, String phn1, String phn2, String reglink, String image, String date, String time, String key) {
         this.Title = title;
         this.description = description;
+        this.selectyear = selectyear;
         this.name1 = name1;
         this.name2 = name2;
         this.phn1 = phn1;
@@ -34,6 +35,14 @@ public class Eventsgetset {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getSelectyear() {
+        return selectyear;
+    }
+
+    public void setSelectyear(String selectyear) {
+        this.selectyear = selectyear;
     }
 
     public String getName1() {

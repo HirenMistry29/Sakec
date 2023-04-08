@@ -4,7 +4,7 @@
     <string name="loading">Loading…</string>
     <string name="no_internet_connection">No internet connection!</string>
     <string name="msg_welcome_to_sake">STUDENT DETAILS</string>
-    <string name="lbl_continue">Update</string>
+    <string name="lbl_continue">UPDATE</string>
     <string name="lbl_roll_no">Roll No.</string>
     <string name="lbl_mobile_number">Mobile number </string>
     <string name="msg_sakec_email_add">Sakec Email Address </string>
@@ -41,6 +41,14 @@
     </string-array>
 
     <string-array name="year">
+        <item>Year</item>
+        <item>FE</item>
+        <item>SE</item>
+        <item>TE</item>
+        <item>BE</item>
+    </string-array>
+
+    <string-array name="Select_Year">
         <item>Year</item>
         <item>FE</item>
         <item>SE</item>

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_alignEnd="@id/btnContinue"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/gradient">
+    android:background="@color/dark">
 
 
         <LinearLayout android:id="@+id/linearColumnwelcometosake"
@@ -310,6 +310,7 @@
                 android:layout_width="match_parent"
                 android:orientation="vertical" style="@style/groupStylecornerRadius_1">
                 <androidx.appcompat.widget.AppCompatButton
+                    android:background="@color/blueberry"
                     android:backgroundTintMode="multiply"
                     android:ellipsize="end"
                     android:gravity="center"
@@ -323,8 +324,11 @@
                     android:singleLine="true"
                     android:text="@string/lbl_continue"
                     android:textAllCaps="false"
+                    android:textStyle="bold"
                     style="@style/CardView.Light"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/white"
+                    android:elevation="@dimen/_10pxh"
+                    />
             </LinearLayout>
         </LinearLayout>
 </ScrollView>

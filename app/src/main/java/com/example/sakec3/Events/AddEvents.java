@@ -22,11 +22,15 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.sakec3.StudentHome;
 import com.example.sakec3.studentchapter.Notice;
 import com.example.sakec3.studentchapter.teachersignin;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -45,6 +49,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 
@@ -57,6 +62,9 @@ public class AddEvents extends Fragment {
     //Contact Details and Registration link
     private EditText name1,phn1,name2,phn2;
     private EditText Regstration_link;
+
+//    Spinner
+    Spinner select_year;
 
 
 //    **-----VARIABLES : ADD Image from gallery ------**
@@ -113,6 +121,8 @@ public class AddEvents extends Fragment {
                             break;
                     }
                 }
+
+
                 return false;
             }
         });
@@ -137,8 +147,25 @@ public class AddEvents extends Fragment {
         phn2=v.findViewById(R.id.phn2);
         Regstration_link=v.findViewById(R.id.reg);
         upload=v.findViewById(R.id.uploadevent);
-
+        select_year = v.findViewById(R.id.select_year);
         pd = new ProgressDialog(getActivity());
+
+
+//        spinner
+        ArrayAdapter<CharSequence> yearlist = ArrayAdapter.createFromResource(
+                getActivity(), R.array.year , com.airbnb.lottie.R.layout.support_simple_spinner_dropdown_item);
+        select_year.setAdapter(yearlist);
+        select_year.setPrompt("Year");
+        select_year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,8 +182,6 @@ public class AddEvents extends Fragment {
 
             }
         });
-
-
         return v;
     }
 
@@ -172,6 +197,7 @@ public class AddEvents extends Fragment {
             }
             showimage.setImageBitmap(bitmap);
         }
+
     }
 
     public void openGallery(){
@@ -218,6 +244,7 @@ public class AddEvents extends Fragment {
         final String uniqueKey = imgdata_reference.push().getKey();
         String eventTitle = title.getText().toString();
         String eventDescription = description.getText().toString();
+        String selectyear = select_year.getSelectedItem().toString();
         String eventName1 = name1.getText().toString();
         String eventName2 = name2.getText().toString();
         String eventPhn1 = phn1.getText().toString();
@@ -240,12 +267,12 @@ public class AddEvents extends Fragment {
 //        includes constructors
 //        parameter to pass -> 1. title   2.imageUrl  3.date  4,time  5.key
 
-        Eventsgetset eventsgetset = new Eventsgetset(eventTitle,eventDescription,eventName1,eventName2 ,eventPhn1,eventPhn2,eventRegLink,imgurl,date,time, uniqueKey);
+        Eventsgetset eventsgetset = new Eventsgetset(eventTitle,eventDescription,selectyear ,eventName1,eventName2 ,eventPhn1,eventPhn2,eventRegLink,imgurl,date,time, uniqueKey);
         imgdata_reference.child(uniqueKey).setValue(eventsgetset).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 pd.dismiss();
-                Toast.makeText(getActivity(), "Event Upload", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Event Uploaded", Toast.LENGTH_SHORT).show();
                 title.setText("");
                 description.setText("");
                 name1.setText("");
@@ -264,5 +291,7 @@ public class AddEvents extends Fragment {
             }
         });
     }
+
+
 
 }

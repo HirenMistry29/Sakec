@@ -136,7 +136,7 @@ public class StudentProfile extends AppCompatActivity {
         }
     }
 
-    private void LoadFragment(Fragment fragment , int flag){
+    private  void LoadFragment(Fragment fragment , int flag){
 //        fragment = new Attendance();
 //        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         FragmentManager fm = getSupportFragmentManager();

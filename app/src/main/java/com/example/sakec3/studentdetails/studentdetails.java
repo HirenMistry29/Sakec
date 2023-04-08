@@ -1,5 +1,7 @@
 package com.example.sakec3.studentdetails;
 
+import static java.util.Calendar.getInstance;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +18,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.sakec3.R;
 import com.example.sakec3.studentdashboard.StudentProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -41,16 +47,13 @@ public class studentdetails extends AppCompatActivity {
     static String sakec_email , mobile;
     static String registration_no , smart_card;
     static String yr , division , roll_no;
+    static String Branch , Year;
 //    static String branchid;
 
 //    FireBase Firestore
     FirebaseFirestore dbroot;
-
-
-
-
-//    Spinner branch;
-//    String [] branchlist = {"Computer Engineering","Information Technology","Cyber Security"};
+    FirebaseDatabase std_details;
+    DatabaseReference std_details_reference =  std_details.getInstance().getReference();
 
 
 
@@ -76,6 +79,9 @@ public class studentdetails extends AppCompatActivity {
         //        -----FireBase-----
         dbroot = FirebaseFirestore.getInstance();
 
+
+
+
 //       ---Branch Spinner(Drop Down list)---
         ArrayAdapter<CharSequence> branchlist = ArrayAdapter.createFromResource(
                 this , R.array.branch , com.airbnb.lottie.R.layout.support_simple_spinner_dropdown_item );
@@ -86,6 +92,7 @@ public class studentdetails extends AppCompatActivity {
                 public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
                     if(parent.getItemAtPosition(i).equals("Select Branch")){
                         //do nothing
+
                     }
                     else{
                         flag = 1;
@@ -137,6 +144,9 @@ public class studentdetails extends AppCompatActivity {
 //                yr = year.getText().toString();
                 division = div.getText().toString();
                 roll_no = rollno.getText().toString();
+                Branch = branch.getSelectedItem().toString();
+                Year = year.getSelectedItem().toString();
+
 
 
 
@@ -146,6 +156,7 @@ public class studentdetails extends AppCompatActivity {
                     Toast.makeText(studentdetails.this, "Enter the details", Toast.LENGTH_SHORT).show();
                 }else{
                     insertData();
+                    UploadData();
                     startActivity(new Intent(studentdetails.this , StudentProfile.class));
                     finish();
                 }
@@ -159,6 +170,15 @@ public class studentdetails extends AppCompatActivity {
         Map<String,String> details = new HashMap<>();
         details.put("FirstName",first_name.trim());
         details.put("LastName",last_name.trim());
+        details.put("MiddleName",middle_name.trim());
+        details.put("SakecEmail",sakec_email.trim());
+        details.put("PhoneNo.",mobile.trim());
+        details.put("RegistrationNo.",registration_no.trim());
+        details.put("SmartCardNo.",smart_card.trim());
+        details.put("Divison",division.trim());
+        details.put("RollNo.",roll_no.trim());
+        details.put("Branch",Branch.trim());
+        details.put("Year",Year.trim());
 //        details.put(last_name.trim());
         dbroot.collection("students").add(details)
                 .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
@@ -166,10 +186,37 @@ public class studentdetails extends AppCompatActivity {
                     public void onComplete(@NonNull Task<DocumentReference> task) {
                         firstname.setText(" ");
                         lastname.setText(" ");
+                        middlename.setText(" ");
+                        sakecemail.setText(" ");
+                        phnno.setText(" ");
+                        registrationno.setText("");
+                        smartcardno.setText("");
+                        div.setText("");
+                        rollno.setText("");
 //                        lastname.setText(" ");
                         Toast.makeText(studentdetails.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void UploadData(){
+        std_details_reference = std_details_reference.child("STUDENTS");
+        final String uniqueKey = std_details_reference.push().getKey();
+        String Year = year.getSelectedItem().toString();
+        String Branch = branch.getSelectedItem().toString();
+        StdDetailsgetset details = new StdDetailsgetset(first_name,middle_name,last_name,sakec_email,mobile,registration_no,smart_card,division,roll_no,Year,Branch,uniqueKey);
+        std_details_reference.child(uniqueKey).setValue(details).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Toast.makeText(studentdetails.this, "Details Uploaded", Toast.LENGTH_SHORT).show();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(studentdetails.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

@@ -4,11 +4,13 @@ import static java.security.AccessController.getContext;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.icu.text.CaseMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +18,9 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 
 import com.example.sakec3.R;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -37,14 +42,27 @@ public class EventsAdapter extends FirebaseRecyclerAdapter<Eventsgetset,EventsAd
     @Override
     protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull Eventsgetset model) {
         //Read Text
-        holder.Title.setText(model.getTitle());
-        holder.Description.setText((model.getDescription()));
 
-        //Read Image
-        Picasso.get()
-                .load(model.getImage())
-                .into(holder.img);
-    }
+        model.getSelectyear();
+
+        if(model.getSelectyear().equals("SE")) {
+            holder.Title.setText(model.getTitle());
+            holder.Description.setText((model.getDescription()));
+
+
+            //Read Image
+            Picasso.get()
+                    .load(model.getImage())
+                    .into(holder.img);
+            }
+        else if(model.getSelectyear()!="SE"){
+
+        }
+        else{
+
+        }
+        }
+
 
     @NonNull
     @Override

@@ -74,6 +74,15 @@
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:textColor="@color/white"/>
 
+        <Spinner
+            android:id="@+id/select_year"
+            android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40pxh"
+            android:layout_marginTop="@dimen/_20pxh"
+            />
+
+
 
 
         <LinearLayout
