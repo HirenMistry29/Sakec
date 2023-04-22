@@ -1,5 +1,6 @@
 package com.example.sakec3.Events;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.sakec3.R;
+import com.example.sakec3.SE.EventHomeAdapter;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
@@ -41,30 +43,34 @@ public class Student_Events extends Fragment {
 
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
        View view = inflater.inflate(R.layout.fragment_student__events, container, false);
        eventsrecyclerview = view.findViewById(R.id.eventsrecyclerview);
-//       progress=view.findViewById(R.id.progress);
 
-//       reference= FirebaseDatabase.getInstance().getReference().child("Events");
+        //        to reverse the recycler view and show the latest post on top
+        LinearLayoutManager LayoutMangager = new LinearLayoutManager(getActivity());
+        LayoutMangager.setReverseLayout(true);
+        LayoutMangager.setStackFromEnd(true);
+        eventsrecyclerview.setLayoutManager(LayoutMangager);
 
-       eventsrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+//       eventsrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        FirebaseRecyclerOptions<Eventsgetset> options =
-                new FirebaseRecyclerOptions.Builder<Eventsgetset>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Events"),Eventsgetset.class)
-                        .build();
 
-        EA = new EventsAdapter(options);
-        eventsrecyclerview.setAdapter(EA);
+            FirebaseRecyclerOptions<Eventsgetset> options =
+                    new FirebaseRecyclerOptions.Builder<Eventsgetset>()
+                            .setQuery(FirebaseDatabase.getInstance().getReference().child("Events").child("SE"), Eventsgetset.class)
+                            .build();
 
-//       eventsrecyclerview.setHasFixedSize(true);
+            EA = new EventsAdapter(options);
+            eventsrecyclerview.setAdapter(EA);
 
-//       getEvent();
+
+
+//                        .build();
+
 
 
        return view;
@@ -81,23 +87,4 @@ public class Student_Events extends Fragment {
         super.onStop();
         EA.stopListening();
     }
-
-    //    private void getEvent() {
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-//                list=new ArrayList<>();
-//                for (DataSnapshot snapshot : datasnapshot.getChildren()){
-//                    Eventsgetset data = snapshot.getValue(Eventsgetset.class);
-//                    list.add(data);
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                progress.setVisibility(View.GONE);
-//                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
 }

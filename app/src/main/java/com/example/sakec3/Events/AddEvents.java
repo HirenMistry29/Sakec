@@ -2,21 +2,25 @@ package com.example.sakec3.Events;
 
 import static android.app.Activity.RESULT_OK;
 
-import android.app.Activity;
+
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
-import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.GravityCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
-import android.os.RecoverySystem;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -30,15 +34,11 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.sakec3.StudentHome;
-import com.example.sakec3.studentchapter.Notice;
-import com.example.sakec3.studentchapter.teachersignin;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import com.example.sakec3.R;
-import com.google.android.gms.common.data.SingleRefDataBufferIterator;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -49,7 +49,6 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 
@@ -65,6 +64,16 @@ public class AddEvents extends Fragment {
 
 //    Spinner
     Spinner select_year;
+    String selectyear;
+
+    //    Noification
+    private static final String CHANNEL_ID = "EVENTS";
+    private static final int Events_ID = 100;
+    NotificationManager nm;
+    Notification NewEvent;
+
+//    Global Variables
+    String eventTitle,eventDescription,eventName1,eventName2,eventPhn1,eventPhn2,eventRegLink;
 
 
 //    **-----VARIABLES : ADD Image from gallery ------**
@@ -127,6 +136,22 @@ public class AddEvents extends Fragment {
             }
         });
 
+        //Notifications:
+        Drawable drawable = ResourcesCompat.getDrawable(getResources(),R.drawable.sakeclogo1,null);
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
+        Bitmap largeIcon = bitmapDrawable.getBitmap();
+
+        nm = (NotificationManager)getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+        NewEvent = new Notification.Builder(getContext())
+                .setLargeIcon(largeIcon)
+                .setSmallIcon(R.drawable.sakeclogo1)
+                .setContentText("New Event")
+                .setSubText("Sakec is organizing a new event")
+                .setChannelId(CHANNEL_ID)
+                .build();
+        nm.createNotificationChannel(new NotificationChannel(CHANNEL_ID,"EVENT",NotificationManager.IMPORTANCE_HIGH));
+        nm.notify(Events_ID,NewEvent);
+
 //        **-----Add Image from Gallery-----**
         addimage = v.findViewById(R.id.addimage);
         showimage = v.findViewById(R.id.showimage);
@@ -156,10 +181,12 @@ public class AddEvents extends Fragment {
                 getActivity(), R.array.year , com.airbnb.lottie.R.layout.support_simple_spinner_dropdown_item);
         select_year.setAdapter(yearlist);
         select_year.setPrompt("Year");
+        select_year.setBackgroundColor(Color.WHITE);
+
         select_year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+                selectyear = select_year.getSelectedItem().toString();
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -175,9 +202,31 @@ public class AddEvents extends Fragment {
                     title.requestFocus();
                 }
                 else if(bitmap==null){
-                    uploadData();
+                    selectyear = select_year.getSelectedItem().toString();
+                    if(selectyear.equals("FE")){
+                    uploadDataFE(); }
+                    else if(selectyear.equals("SE")){
+                        uploadDataSE();
+                    }
+                    else if(selectyear.equals("TE")){
+                        uploadDataTE();
+                    }
+                    else if(selectyear.equals("BE")){
+                        uploadDataBE();
+                    }
                 }else{
-                    uploadimage();
+                    selectyear = select_year.getSelectedItem().toString();
+                    if(selectyear.equals("FE")){
+                    uploadimageFE(); }
+                    else if(selectyear.equals("SE")){
+                        uploadimageSE();
+                    }
+                    else if(selectyear.equals("TE")){
+                        uploadimageTE();
+                    }
+                    else if(selectyear.equals("BE")){
+                        uploadimageBE();
+                    }
                 }
 
             }
@@ -204,20 +253,109 @@ public class AddEvents extends Fragment {
         Intent pickimage = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(pickimage,REQ);
     }
-    private void uploadimage() {
+    private void uploadimageFE() {
+            pd.setMessage("Uploading...");
+            pd.show();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+            byte[] finalimg = baos.toByteArray();  //array created to store the image in java
+            final StorageReference imgpath;
+            imgpath = imgstorageReference.child("Events").child("FE").child(finalimg + "jpg");
+            final UploadTask uploadtask = imgpath.putBytes(finalimg);
+            getActivity();
+            uploadtask.addOnCompleteListener(getActivity(), new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        uploadtask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                imgpath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+                                        imgurl = String.valueOf(uri);
+                                        uploadDataFE();
+                                    }
+                                });
+                            }
+                        });
+                    } else {
+                        pd.dismiss();
+                        Toast.makeText(getActivity(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            });
+        }//---------uploadimage FE function ends
+
+    private void uploadDataFE() {
+            imgdata_reference = imgdata_reference.child("Events").child("FE");
+            final String uniqueKey = imgdata_reference.push().getKey();
+            eventTitle = title.getText().toString();
+            eventDescription = description.getText().toString();
+            selectyear = select_year.getSelectedItem().toString();
+            eventName1 = name1.getText().toString();
+            eventName2 = name2.getText().toString();
+            eventPhn1 = phn1.getText().toString();
+            eventPhn2 = phn2.getText().toString();
+            eventRegLink = Regstration_link.getText().toString();
+
+            //         -----Date-----
+            Calendar calenderdate = Calendar.getInstance();
+            SimpleDateFormat currentDate = new SimpleDateFormat("dd-MM-yy");
+
+//        with the help pf getTime method , we find date as well as time
+            String date = currentDate.format(calenderdate.getTime());
+
+            //        -----Time-----
+            Calendar calendertime = Calendar.getInstance();
+            SimpleDateFormat currentTime = new SimpleDateFormat("hh:mm");
+            String time = currentTime.format(calendertime.getTime());
+
+            //        admin created Notice class
+//        includes constructors
+//        parameter to pass -> 1. title   2.imageUrl  3.date  4,time  5.key
+
+            Eventsgetset eventsgetset = new Eventsgetset(eventTitle,eventDescription,selectyear ,eventName1,eventName2 ,eventPhn1,eventPhn2,eventRegLink,imgurl,date,time, uniqueKey);
+            imgdata_reference.child(uniqueKey).setValue(eventsgetset).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    pd.dismiss();
+                    Toast.makeText(getActivity(), "Event Uploaded", Toast.LENGTH_SHORT).show();
+                    nm.notify(Events_ID,NewEvent);
+                    title.setText("");
+                    description.setText("");
+                    name1.setText("");
+                    name2.setText("");
+                    phn1.setText("");
+                    phn2.setText("");
+                    Regstration_link.setText("");
+
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    pd.dismiss();
+                    Toast.makeText(getActivity(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                }
+            });
+    }
+
+    private void uploadimageSE() {
         pd.setMessage("Uploading...");
         pd.show();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG , 50 , baos);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
         byte[] finalimg = baos.toByteArray();  //array created to store the image in java
         final StorageReference imgpath;
-        imgpath = imgstorageReference.child("Events").child(finalimg+"jpg");
+        imgpath = imgstorageReference.child("Events").child("SE").child(finalimg + "jpg");
         final UploadTask uploadtask = imgpath.putBytes(finalimg);
         getActivity();
         uploadtask.addOnCompleteListener(getActivity(), new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     uploadtask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -225,31 +363,31 @@ public class AddEvents extends Fragment {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     imgurl = String.valueOf(uri);
-                                    uploadData();
+                                    uploadDataSE();
                                 }
                             });
                         }
                     });
-                }else{
+                } else {
                     pd.dismiss();
                     Toast.makeText(getActivity(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
-    } //---------uploadimage function ends
+    }//---------uploadimage SE function ends
 
-    private void uploadData() {
-        imgdata_reference = imgdata_reference.child("Events");
+    private void uploadDataSE() {
+        imgdata_reference = imgdata_reference.child("Events").child("SE");
         final String uniqueKey = imgdata_reference.push().getKey();
-        String eventTitle = title.getText().toString();
-        String eventDescription = description.getText().toString();
-        String selectyear = select_year.getSelectedItem().toString();
-        String eventName1 = name1.getText().toString();
-        String eventName2 = name2.getText().toString();
-        String eventPhn1 = phn1.getText().toString();
-        String eventPhn2 = phn2.getText().toString();
-        String eventRegLink = Regstration_link.getText().toString();
+        eventTitle = title.getText().toString();
+        eventDescription = description.getText().toString();
+        selectyear = select_year.getSelectedItem().toString();
+        eventName1 = name1.getText().toString();
+        eventName2 = name2.getText().toString();
+        eventPhn1 = phn1.getText().toString();
+        eventPhn2 = phn2.getText().toString();
+        eventRegLink = Regstration_link.getText().toString();
 
         //         -----Date-----
         Calendar calenderdate = Calendar.getInstance();
@@ -273,6 +411,7 @@ public class AddEvents extends Fragment {
             public void onSuccess(Void unused) {
                 pd.dismiss();
                 Toast.makeText(getActivity(), "Event Uploaded", Toast.LENGTH_SHORT).show();
+                nm.notify(Events_ID,NewEvent);
                 title.setText("");
                 description.setText("");
                 name1.setText("");
@@ -292,6 +431,182 @@ public class AddEvents extends Fragment {
         });
     }
 
+    private void uploadimageTE() {
+        pd.setMessage("Uploading...");
+        pd.show();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+        byte[] finalimg = baos.toByteArray();  //array created to store the image in java
+        final StorageReference imgpath;
+        imgpath = imgstorageReference.child("Events").child("TE").child(finalimg + "jpg");
+        final UploadTask uploadtask = imgpath.putBytes(finalimg);
+        getActivity();
+        uploadtask.addOnCompleteListener(getActivity(), new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                if (task.isSuccessful()) {
+                    uploadtask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            imgpath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    imgurl = String.valueOf(uri);
+                                    uploadDataTE();
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    pd.dismiss();
+                    Toast.makeText(getActivity(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                }
 
+            }
+        });
+    }//---------uploadimage SE function ends
+
+    private void uploadDataTE() {
+        imgdata_reference = imgdata_reference.child("Events").child("TE");
+        final String uniqueKey = imgdata_reference.push().getKey();
+        eventTitle = title.getText().toString();
+        eventDescription = description.getText().toString();
+        selectyear = select_year.getSelectedItem().toString();
+        eventName1 = name1.getText().toString();
+        eventName2 = name2.getText().toString();
+        eventPhn1 = phn1.getText().toString();
+        eventPhn2 = phn2.getText().toString();
+        eventRegLink = Regstration_link.getText().toString();
+
+        //         -----Date-----
+        Calendar calenderdate = Calendar.getInstance();
+        SimpleDateFormat currentDate = new SimpleDateFormat("dd-MM-yy");
+
+//        with the help pf getTime method , we find date as well as time
+        String date = currentDate.format(calenderdate.getTime());
+
+        //        -----Time-----
+        Calendar calendertime = Calendar.getInstance();
+        SimpleDateFormat currentTime = new SimpleDateFormat("hh:mm");
+        String time = currentTime.format(calendertime.getTime());
+
+        //        admin created Notice class
+//        includes constructors
+//        parameter to pass -> 1. title   2.imageUrl  3.date  4,time  5.key
+
+        Eventsgetset eventsgetset = new Eventsgetset(eventTitle,eventDescription,selectyear ,eventName1,eventName2 ,eventPhn1,eventPhn2,eventRegLink,imgurl,date,time, uniqueKey);
+        imgdata_reference.child(uniqueKey).setValue(eventsgetset).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                pd.dismiss();
+                Toast.makeText(getActivity(), "Event Uploaded", Toast.LENGTH_SHORT).show();
+                nm.notify(Events_ID,NewEvent);
+                title.setText("");
+                description.setText("");
+                name1.setText("");
+                name2.setText("");
+                phn1.setText("");
+                phn2.setText("");
+                Regstration_link.setText("");
+
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                pd.dismiss();
+                Toast.makeText(getActivity(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void uploadimageBE() {
+        pd.setMessage("Uploading...");
+        pd.show();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+        byte[] finalimg = baos.toByteArray();  //array created to store the image in java
+        final StorageReference imgpath;
+        imgpath = imgstorageReference.child("Events").child("BE").child(finalimg + "jpg");
+        final UploadTask uploadtask = imgpath.putBytes(finalimg);
+        getActivity();
+        uploadtask.addOnCompleteListener(getActivity(), new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                if (task.isSuccessful()) {
+                    uploadtask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            imgpath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    imgurl = String.valueOf(uri);
+                                    uploadDataBE();
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    pd.dismiss();
+                    Toast.makeText(getActivity(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+    }//---------uploadimage SE function ends
+
+    private void uploadDataBE() {
+        imgdata_reference = imgdata_reference.child("Events").child("BE");
+        final String uniqueKey = imgdata_reference.push().getKey();
+        eventTitle = title.getText().toString();
+        eventDescription = description.getText().toString();
+        selectyear = select_year.getSelectedItem().toString();
+        eventName1 = name1.getText().toString();
+        eventName2 = name2.getText().toString();
+        eventPhn1 = phn1.getText().toString();
+        eventPhn2 = phn2.getText().toString();
+        eventRegLink = Regstration_link.getText().toString();
+
+        //         -----Date-----
+        Calendar calenderdate = Calendar.getInstance();
+        SimpleDateFormat currentDate = new SimpleDateFormat("dd-MM-yy");
+
+//        with the help pf getTime method , we find date as well as time
+        String date = currentDate.format(calenderdate.getTime());
+
+        //        -----Time-----
+        Calendar calendertime = Calendar.getInstance();
+        SimpleDateFormat currentTime = new SimpleDateFormat("hh:mm");
+        String time = currentTime.format(calendertime.getTime());
+
+        //        admin created Notice class
+//        includes constructors
+//        parameter to pass -> 1. title   2.imageUrl  3.date  4,time  5.key
+
+        Eventsgetset eventsgetset = new Eventsgetset(eventTitle,eventDescription,selectyear ,eventName1,eventName2 ,eventPhn1,eventPhn2,eventRegLink,imgurl,date,time, uniqueKey);
+        imgdata_reference.child(uniqueKey).setValue(eventsgetset).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                pd.dismiss();
+                Toast.makeText(getActivity(), "Event Uploaded", Toast.LENGTH_SHORT).show();
+                nm.notify(Events_ID,NewEvent);
+                title.setText("");
+                description.setText("");
+                name1.setText("");
+                name2.setText("");
+                phn1.setText("");
+                phn2.setText("");
+                Regstration_link.setText("");
+
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                pd.dismiss();
+                Toast.makeText(getActivity(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 }

@@ -11,7 +11,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.view.View;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -21,11 +20,11 @@ import android.widget.Toast;
 
 import com.example.sakec3.Events.Student_Events;
 import com.example.sakec3.R;
-import com.example.sakec3.StudentHome;
+import com.example.sakec3.SE.StudentHome;
 import com.example.sakec3.attendance.Attendance;
 import com.example.sakec3.signin.SignIn2;
 import com.example.sakec3.studentchapter.StudentChapter;
-import com.example.sakec3.studentdetails.studentdetails;
+import com.example.sakec3.studentprofiledisplay;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
@@ -33,10 +32,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-
-import java.io.ByteArrayOutputStream;
 
 public class StudentProfile extends AppCompatActivity {
     static public DrawerLayout drawer;
@@ -72,7 +67,7 @@ public class StudentProfile extends AppCompatActivity {
         editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(StudentProfile.this , studentdetails.class ));
+                startActivity(new Intent(StudentProfile.this , studentprofiledisplay.class ));
             }
         });
 

@@ -4,19 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient2"
+    android:background="@drawable/rectangle_bg_white_a700"
     tools:context=".MainActivity" >
 
     <ImageView
         android:id="@+id/SakecLogo"
         android:layout_width="439dp"
         android:layout_height="446dp"
-        android:src="@drawable/sakeclogowhite"
+        android:src="@drawable/sakeclogo1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.154" />
+        app:layout_constraintVertical_bias="0.004" />
+
 
     <ImageView
         android:id="@+id/studentsignin"
@@ -27,19 +28,21 @@
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.966"
+        app:layout_constraintVertical_bias="0.973"
         app:srcCompat="@drawable/studentbutton" />
 
     <ImageView
         android:id="@+id/teachersignin"
         android:layout_width="330dp"
         android:layout_height="50dp"
+        android:backgroundTint="@color/black"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.898"
+        app:layout_constraintVertical_bias="0.878"
         app:srcCompat="@drawable/teacherbutton" />
 
 

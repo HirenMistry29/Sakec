@@ -3,6 +3,7 @@ package com.example.sakec3.studentdetails;
 import static java.util.Calendar.getInstance;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,11 +17,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sakec3.R;
-import com.example.sakec3.studentdashboard.StudentProfile;
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.example.sakec3.SE.StudentHome;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
@@ -55,6 +57,11 @@ public class studentdetails extends AppCompatActivity {
     FirebaseDatabase std_details;
     DatabaseReference std_details_reference =  std_details.getInstance().getReference();
 
+//    FireBase Auth
+    FirebaseAuth auth;
+    EditText password;
+
+
 
 
     @Override
@@ -75,9 +82,13 @@ public class studentdetails extends AppCompatActivity {
         year=findViewById(R.id.clas);
         div=findViewById(R.id.div);
         rollno=findViewById(R.id.rollno);
+        password = findViewById(R.id.password);
 
         //        -----FireBase-----
         dbroot = FirebaseFirestore.getInstance();
+
+//        --------FireBase Auth--------------------
+        auth = FirebaseAuth.getInstance();
 
 
 
@@ -87,6 +98,7 @@ public class studentdetails extends AppCompatActivity {
                 this , R.array.branch , com.airbnb.lottie.R.layout.support_simple_spinner_dropdown_item );
             branch.setAdapter(branchlist);
             branch.setPrompt("Branch");
+            branch.setBackgroundColor(Color.BLACK);
             branch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
@@ -109,6 +121,8 @@ public class studentdetails extends AppCompatActivity {
         ArrayAdapter<CharSequence> yearlist = ArrayAdapter.createFromResource(
                 this , R.array.year , com.airbnb.lottie.R.layout.support_simple_spinner_dropdown_item );
         year.setAdapter(yearlist);
+        year.setPrompt("Year");
+        year.setBackgroundColor(Color.BLACK);
         year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
@@ -153,12 +167,44 @@ public class studentdetails extends AppCompatActivity {
 
                 if(first_name.isEmpty() || last_name.isEmpty() || middle_name.isEmpty() || sakec_email.isEmpty() || mobile.isEmpty()
                          || flag==0 || stick==0 || division.isEmpty() || roll_no.isEmpty() || mobile.length()<10 ){
+
                     Toast.makeText(studentdetails.this, "Enter the details", Toast.LENGTH_SHORT).show();
                 }else{
-                    insertData();
-                    UploadData();
-                    startActivity(new Intent(studentdetails.this , StudentProfile.class));
-                    finish();
+                    auth.createUserWithEmailAndPassword(sakecemail.getText().toString(),password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                        @Override
+                        public void onSuccess(AuthResult authResult) {
+                            FirebaseUser user = auth.getCurrentUser();
+                            Toast.makeText(studentdetails.this, "Account Created", Toast.LENGTH_SHORT).show();
+                            DocumentReference df = dbroot.collection("Users").document(user.getUid());
+
+                            Map<String,Object> details = new HashMap<>();
+                            details.put("FirstName",first_name.trim());
+                            details.put("LastName",last_name.trim());
+                            details.put("MiddleName",middle_name.trim());
+                            details.put("SakecEmail",sakec_email.trim());
+                            details.put("PhoneNo.",mobile.trim());
+                            details.put("RegistrationNo.",registration_no.trim());
+                            details.put("SmartCardNo.",smart_card.trim());
+                            details.put("Divison",division.trim());
+                            details.put("RollNo.",roll_no.trim());
+                            details.put("Branch",Branch.trim());
+                            details.put("Year",Year.trim());
+                            details.put("Role","1");  // ROLE 1 for SE Students;
+
+                            df.set(details);
+
+//                            insertData();
+//                            UploadData();
+                            startActivity(new Intent(studentdetails.this, StudentHome.class));
+                            finish();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(studentdetails.this, "Failed to create an account", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
                 }
             }
         });
@@ -166,37 +212,7 @@ public class studentdetails extends AppCompatActivity {
     }
 
     public void insertData(){
-//        creating a map to store multiple data in one object
-        Map<String,String> details = new HashMap<>();
-        details.put("FirstName",first_name.trim());
-        details.put("LastName",last_name.trim());
-        details.put("MiddleName",middle_name.trim());
-        details.put("SakecEmail",sakec_email.trim());
-        details.put("PhoneNo.",mobile.trim());
-        details.put("RegistrationNo.",registration_no.trim());
-        details.put("SmartCardNo.",smart_card.trim());
-        details.put("Divison",division.trim());
-        details.put("RollNo.",roll_no.trim());
-        details.put("Branch",Branch.trim());
-        details.put("Year",Year.trim());
-//        details.put(last_name.trim());
-        dbroot.collection("students").add(details)
-                .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentReference> task) {
-                        firstname.setText(" ");
-                        lastname.setText(" ");
-                        middlename.setText(" ");
-                        sakecemail.setText(" ");
-                        phnno.setText(" ");
-                        registrationno.setText("");
-                        smartcardno.setText("");
-                        div.setText("");
-                        rollno.setText("");
-//                        lastname.setText(" ");
-                        Toast.makeText(studentdetails.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
-                    }
-                });
+
     }
 
     private void UploadData(){

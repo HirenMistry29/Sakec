@@ -1,25 +1,16 @@
 package com.example.sakec3.Events;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.media.metrics.Event;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 
-import com.example.sakec3.MainActivity;
 import com.example.sakec3.R;
-import com.example.sakec3.StudentHome;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class upload_events extends Fragment {

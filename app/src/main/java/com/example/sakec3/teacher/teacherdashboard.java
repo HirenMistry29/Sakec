@@ -18,7 +18,7 @@ import android.view.MenuItem;
 
 import com.example.sakec3.Events.upload_events;
 import com.example.sakec3.R;
-import com.example.sakec3.StudentHome;
+import com.example.sakec3.SE.StudentHome;
 import com.example.sakec3.attendance.admin_attendance;
 import com.example.sakec3.studentchapter.teachersignin;
 import com.google.android.material.navigation.NavigationView;

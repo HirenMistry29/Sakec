@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="@color/dark"
+    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="6dp"
     android:background="@color/white"
     android:elevation="10dp"
     app:cardUseCompatPadding="true"
-    android:padding="@dimen/_10pxh"
+    android:padding="@dimen/_20pxh"
     >
 
     <LinearLayout
@@ -27,7 +27,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="@dimen/_36pxh"
                 android:layout_height="@dimen/_36pxh"
-                android:src="@drawable/sakeclogowhite2"/>
+                android:src="@drawable/sakeclogo1"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
                 android:textSize="@dimen/_20pxh"
                 android:paddingStart="@dimen/_10pxh"
                 android:layout_gravity="center_vertical"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                />
 
 
@@ -64,7 +64,7 @@
             android:textSize="@dimen/_20pxh"
             android:gravity="center"
             android:textStyle="bold"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             />
 
         <TextView
@@ -72,7 +72,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Description"
+            android:textColor="@color/box"
             android:textSize="@dimen/_16pxh"/>
+        <TextView
+            android:id="@+id/RegLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RegLink"
+            android:textColor="@color/blueberry"
+            android:textSize="@dimen/_16pxh"
+            android:inputType="textUri"/>
 
 
     </LinearLayout>

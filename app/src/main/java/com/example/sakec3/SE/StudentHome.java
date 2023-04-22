@@ -1,9 +1,11 @@
-package com.example.sakec3;
+package com.example.sakec3.SE;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +15,17 @@ import android.widget.TextView;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.sakec3.Events.EventsAdapter;
+import com.example.sakec3.Events.Eventsgetset;
+import com.example.sakec3.R;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import org.checkerframework.checker.units.qual.A;
 
 import java.util.ArrayList;
 
@@ -27,6 +33,15 @@ public class StudentHome extends Fragment {
 
     public TextView person;
     FirebaseFirestore dbroot;
+
+//    Recycler View
+    private RecyclerView eventsrecyclerview;
+    private ArrayList<Eventsgetset> list;
+    private EventsAdapter adapter;
+    EventHomeAdapter EA;
+
+//    Database
+    private DatabaseReference db;
 
 
 
@@ -51,11 +66,42 @@ public class StudentHome extends Fragment {
 
         imageSlider.setImageList(slideModels,ScaleTypes.FIT);
 
-//         person = view.findViewById(R.id.studentname);
          dbroot = FirebaseFirestore.getInstance();
-//        fetchData();
+
+//      Recycler View
+        eventsrecyclerview = view.findViewById(R.id.eventsrecyclerview);
+        //        to reverse the recycler view and show the latest post on top
+        LinearLayoutManager LayoutMangager = new LinearLayoutManager(getActivity());
+        LayoutMangager.setReverseLayout(true);
+        LayoutMangager.setStackFromEnd(true);
+        eventsrecyclerview.setLayoutManager(LayoutMangager);
+        eventsrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+
+        FirebaseRecyclerOptions<Eventsgetset> options =
+                new FirebaseRecyclerOptions.Builder<Eventsgetset>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Events").child("SE"), Eventsgetset.class)
+                        .build();
+
+        EA = new EventHomeAdapter(options);
+        eventsrecyclerview.setAdapter(EA);
+
+//
 
         return view;
+
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EA.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EA.stopListening();
     }
 
     public void fetchData(){

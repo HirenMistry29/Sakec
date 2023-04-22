@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".signin.SignIn"
-    android:background="@drawable/gradient2">
+    android:background="@color/white">
 
 
     <com.airbnb.lottie.LottieAnimationView
@@ -29,7 +29,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="@dimen/_20pxh"
         android:text="Forget Password?"
-        android:textColor="@color/white"
+        android:textColor="@color/box"
         app:layout_constraintBottom_toTopOf="@+id/log"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.996"
@@ -43,7 +43,7 @@
         android:layout_height="@dimen/_1pxv"
         android:layout_marginStart="5dp"
         android:layout_weight="0.40"
-        android:background="@color/white"
+        android:background="@color/box"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView3"
         app:layout_constraintHorizontal_bias="0.352"
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_20pxh"
         android:layout_marginEnd="@dimen/_20pxh"
-        android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+        android:background="@drawable/rectangle_border_black_900_radius_3"
         android:ellipsize="end"
         android:hint="@string/email"
 
@@ -71,7 +71,7 @@
         android:paddingEnd="@dimen/_30pxh"
         android:paddingBottom="@dimen/_13pxv"
         android:singleLine="true"
-        android:textColorHint="@color/white"
+        android:textColorHint="@color/box"
         app:layout_constraintBottom_toTopOf="@+id/etEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -87,6 +87,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/kumbhsansbold"
         android:text="OR"
+        android:textColor="@color/box"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
@@ -103,7 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_20pxh"
         android:layout_marginEnd="@dimen/_20pxh"
-        android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+        android:background="@drawable/rectangle_border_black_900_radius_3"
         android:ellipsize="start"
         android:hint="@string/password"
         android:inputType="numberPassword"
@@ -112,7 +113,7 @@
         android:paddingEnd="@dimen/_30pxh"
         android:paddingBottom="@dimen/_13pxv"
         android:singleLine="true"
-        android:textColorHint="@color/white"
+        android:textColorHint="@color/box"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -123,7 +124,8 @@
         tools:ignore="Autofill" />
 
     <androidx.appcompat.widget.AppCompatButton
-
+        android:backgroundTint="@color/white"
+        android:elevation="@dimen/_20pxh"
         android:id="@+id/log"
 
         style="@style/CardView.Light"
@@ -156,6 +158,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Don't have an account?"
+        android:textColor="@color/box"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.368"
@@ -169,7 +172,7 @@
         android:layout_height="@dimen/_1pxv"
         android:layout_marginEnd="5dp"
         android:layout_weight="0.40"
-        android:background="@color/white"
+        android:background="@color/box"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.521"
@@ -183,12 +186,14 @@
         android:layout_height="wrap_content"
         android:text=" Create One"
         android:textStyle="bold"
+        android:textColor="@color/box"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Create1"
         app:layout_constraintTop_toBottomOf="@+id/log"
         app:layout_constraintVertical_bias="0.028" />
 
     <ImageView
+        android:backgroundTint="@color/box"
         android:id="@+id/google"
         android:layout_width="353dp"
         android:layout_height="41dp"

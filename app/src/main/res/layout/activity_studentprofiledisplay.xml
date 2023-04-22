@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".studentprofiledisplay">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100pxh">
+
+        <ImageView
+            android:layout_width="451dp"
+            android:layout_height="264dp"
+            android:src="@drawable/profile_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="244dp"
+        app:cardCornerRadius="@dimen/_20pxh"
+        app:cardElevation="@dimen/_10pxh"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="430dp"
+            android:layout_height="270dp"
+            android:src="@drawable/profile_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_20pxh"
+            android:text="PROFILE"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_25pxh"
+            android:textStyle="bold" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="@dimen/_120pxh"
+            android:layout_height="@dimen/_120pxh"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_95pxh"
+            android:src="@drawable/profile" />
+
+        <TextView
+            android:id="@+id/edit_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_220pxh"
+            android:text="Edit Profile"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_200pxh">
+
+        <LinearLayout
+            android:layout_width="@dimen/_400pxh"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_48pxh"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_380pxh"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:elevation="@dimen/_10pxh"
+                android:outlineAmbientShadowColor="@color/box"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_10pxh">
+
+                <LinearLayout
+                    android:layout_width="@dimen/_380pxh"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10pxh"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/kumbhsansbold"
+                        android:text="name : "
+                        android:textColor="@color/grey_font"
+                        android:textStyle="italic" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30pxh">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/FName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:paddingStart="@dimen/_10pxh"
+                                android:text="Hiren"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_16pxh"
+                                ></com.google.android.material.textview.MaterialTextView>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30pxh">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/MName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/_5pxh"
+                                android:text="Shailesh"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_16pxh" >
+
+                            </com.google.android.material.textview.MaterialTextView>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30pxh"
+                            android:tooltipText="NAME">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/LName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/_5pxh"
+                                android:text="Mistry"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_16pxh"
+
+                                ></com.google.android.material.textview.MaterialTextView>
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/kumbhsansbold"
+                        android:text="branch :"
+                        android:textColor="@color/grey_font"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/_10pxh"
+                        android:text="Computer Engineering"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_16pxh"
+                         />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/kumbhsansbold"
+                        android:text="Registration Number :"
+                        android:textColor="@color/grey_font"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/_10pxh"
+                        android:text="16452"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_16pxh"
+                         />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/kumbhsansbold"
+                        android:text="Smartcard Number :"
+                        android:textColor="@color/grey_font"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/_10pxh"
+                        android:text="CM20212HSM16452"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_16pxh"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/kumbhsansbold"
+                        android:text="Class :"
+                        android:textColor="@color/grey_font"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/_10pxh"
+                        android:text="SE"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_16pxh"
+                         />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/kumbhsansbold"
+                        android:text="Division :"
+                        android:textColor="@color/grey_font"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/_10pxh"
+                        android:text="4"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_16pxh"
+                         />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/kumbhsansbold"
+                        android:text="Roll No. :"
+                        android:textColor="@color/grey_font"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/_10pxh"
+                        android:text="34"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_16pxh"
+                    />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="133dp"
+                    android:layout_height="103dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="@dimen/_270pxh"
+                    android:src="@drawable/profile_clipart" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

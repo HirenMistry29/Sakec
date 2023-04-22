@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Events.upload_events"
-    android:background="@color/dark">
+    android:background="@color/white">
     
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/FAB"

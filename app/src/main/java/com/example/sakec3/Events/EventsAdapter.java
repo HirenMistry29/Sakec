@@ -45,22 +45,17 @@ public class EventsAdapter extends FirebaseRecyclerAdapter<Eventsgetset,EventsAd
 
         model.getSelectyear();
 
-        if(model.getSelectyear().equals("SE")) {
             holder.Title.setText(model.getTitle());
             holder.Description.setText((model.getDescription()));
+            holder.RegLink.setText(model.getReglink());
 
 
             //Read Image
             Picasso.get()
                     .load(model.getImage())
                     .into(holder.img);
-            }
-        else if(model.getSelectyear()!="SE"){
 
-        }
-        else{
 
-        }
         }
 
 
@@ -75,7 +70,8 @@ public class EventsAdapter extends FirebaseRecyclerAdapter<Eventsgetset,EventsAd
 
     class myViewHolder extends RecyclerView.ViewHolder{
         ImageView img;
-        TextView Title , Description;
+        TextView Title , Description , RegLink ;
+
 
         public myViewHolder(@NonNull View itemView){
             super(itemView);
@@ -83,6 +79,7 @@ public class EventsAdapter extends FirebaseRecyclerAdapter<Eventsgetset,EventsAd
             img = (ImageView)itemView.findViewById(R.id.eventbanner);
             Title = (TextView)itemView.findViewById(R.id.eventtitle);
             Description = (TextView)itemView.findViewById(R.id.description);
+            RegLink=(TextView)itemView.findViewById(R.id.RegLink);
 
         }
 

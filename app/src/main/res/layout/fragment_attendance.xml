@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".attendance.Attendance"
-    android:background="@drawable/gradient2">
+    android:background="@drawable/rectangle_bg_white_a700">
 
 <!--     TODO: Update blank fragment layout -->
     <FrameLayout
@@ -27,6 +27,7 @@
     </FrameLayout>
 
     <Button
+        android:background="@color/blueberry"
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,7 +55,7 @@
         android:layout_height="wrap_content"
         android:text="Math"
         android:textSize="@dimen/_15pxh"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
       />
 
         <TextView
@@ -63,7 +64,7 @@
             android:layout_height="wrap_content"
             android:text="OS"
             android:textSize="@dimen/_15pxh"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
              />
 
         <TextView
@@ -72,7 +73,7 @@
             android:layout_height="wrap_content"
             android:text="DBMS"
             android:textSize="@dimen/_15pxh"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             />
 
         <TextView
@@ -81,7 +82,7 @@
             android:layout_height="wrap_content"
             android:text="MP"
             android:textSize="@dimen/_15pxh"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             />
         <TextView
             android:id="@+id/AOA"
@@ -89,7 +90,7 @@
             android:layout_height="wrap_content"
             android:text="AOA"
             android:textSize="@dimen/_15pxh"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             />
 
 

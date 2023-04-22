@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".teacher.TeacherLogin"
-    android:background="@drawable/gradient2"
+    android:background="@color/white"
     android:orientation="vertical">
 
 
@@ -29,7 +29,7 @@
             android:gravity="center"
             android:singleLine="false"
             android:text="TEACHER lOGIN"
-            android:textColor="@color/white"
+            android:textColor="@color/box"
             android:textColorHighlight="#000000" />
 
         <LinearLayout android:id="@+id/linearRowlinetwo"
@@ -37,7 +37,7 @@
             android:layout_marginEnd="@dimen/_6pxh"
             android:layout_marginTop="@dimen/_60pxv"
             android:layout_width="match_parent" android:orientation="horizontal">
-            <View android:background="@color/white"
+            <View android:background="@color/box"
                 android:id="@+id/lineLineTwo"
                 android:layout_height="@dimen/_1pxv"
                 android:layout_marginBottom="@dimen/_6pxv"
@@ -53,8 +53,8 @@
                 android:layout_width="0dp" android:singleLine="true"
                 style="@style/txtLeagueSpartanregular15"
                 android:text="@string/msg_enter_the_detai"
-                android:textColor="@color/white"/>
-            <View android:background="@color/white"
+                android:textColor="@color/box"/>
+            <View android:background="@color/box"
                 android:id="@+id/lineLineOne"
                 android:layout_height="@dimen/_1pxv"
                 android:layout_marginBottom="@dimen/_6pxv"
@@ -64,10 +64,10 @@
         </LinearLayout>
 
         <EditText
-            android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+            android:background="@drawable/rectangle_border_black_900_radius_3"
             android:ellipsize="start"
             android:hint="Employee ID"
-            android:textColor="@color/white"
+            android:textColor="@color/box"
             android:id="@+id/employeeid" android:inputType="text"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_1pxh"
@@ -79,14 +79,14 @@
             android:paddingStart="@dimen/_15pxh"
             android:paddingTop="@dimen/_17pxv"
             android:singleLine="true"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/box"
             style="@style/CardView.Light" tools:ignore="Autofill"/>
 
     <EditText
-        android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+        android:background="@drawable/rectangle_border_black_900_radius_3"
         android:ellipsize="start"
         android:hint="E-mail"
-        android:textColor="@color/white"
+        android:textColor="@color/box"
         android:id="@+id/email" android:inputType="text"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_1pxh"
@@ -98,14 +98,14 @@
         android:paddingStart="@dimen/_15pxh"
         android:paddingTop="@dimen/_17pxv"
         android:singleLine="true"
-        android:textColorHint="@color/white"
+        android:textColorHint="@color/box"
         style="@style/CardView.Light" tools:ignore="Autofill"/>
 
         <EditText
-            android:background="@drawable/rectangle_border_bluegray_100_radius_3"
+            android:background="@drawable/rectangle_border_black_900_radius_3"
             android:ellipsize="start"
             android:hint="Password"
-            android:textColor="@color/white"
+            android:textColor="@color/box"
             android:id="@+id/password"
             android:inputType="textPassword"
             android:layout_height="wrap_content"
@@ -119,7 +119,7 @@
             android:paddingTop="@dimen/_17pxv"
             android:singleLine="true"
             app:passwordToggleEnabled="true"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/box"
             style="@style/CardView.Light" tools:ignore="Autofill"/>
 
         <Button

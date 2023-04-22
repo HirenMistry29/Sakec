@@ -1,13 +1,21 @@
 package com.example.sakec3;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.example.sakec3.signin.SignIn;
 import com.example.sakec3.teacher.TeacherLogin;
@@ -17,6 +25,11 @@ public class MainActivity extends AppCompatActivity {
     private ImageView studentsignin;
     private ImageView teachersignin;
     private ImageView Sakeclogo;
+    private TextView reg,login;
+
+//    Noification
+    private static final String CHANNEL_ID = "EVENTS";
+    private static final int Events_ID = 100;
 
 //    Animation
     static public Animation TopAnim , BottomAnim;
@@ -26,6 +39,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Drawable drawable = ResourcesCompat.getDrawable(getResources(),R.drawable.sakeclogo1,null);
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
+        Bitmap largeIcon = bitmapDrawable.getBitmap();
+
+//        NOTIFICATION
+
+//        NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+//        Notification NewEvent = new Notification.Builder(this)
+//                .setLargeIcon(largeIcon)
+//                .setSmallIcon(R.drawable.sakeclogo1)
+//                .setContentText("New Event")
+//                .setSubText("Sakec is organizing a new event")
+//                .setChannelId(CHANNEL_ID)
+//                .build();
+//        nm.createNotificationChannel(new NotificationChannel(CHANNEL_ID,"EVENT",NotificationManager.IMPORTANCE_HIGH));
+//        nm.notify(Events_ID,NewEvent);
+
         //load Animations
         TopAnim = AnimationUtils.loadAnimation(this , R.anim.top_animation);
         BottomAnim = AnimationUtils.loadAnimation(this , R.anim.bottom_animation);
@@ -34,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         teachersignin = findViewById(R.id.teachersignin);
         teachersignin.setAnimation(BottomAnim);
         Sakeclogo = findViewById(R.id.SakecLogo);
+//        reg = findViewById(R.id.register);
+//        login = findViewById(R.id.Login);
 
         studentsignin = findViewById(R.id.studentsignin);
 
@@ -60,6 +92,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+//        reg.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this, Registration.class));
+//            }
+//        });
     }
 }
 
