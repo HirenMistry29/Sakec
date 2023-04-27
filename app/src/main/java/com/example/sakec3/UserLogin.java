@@ -1,7 +1,5 @@
 package com.example.sakec3;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.sakec3.FE.FeDashboard;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -101,6 +98,11 @@ public class UserLogin extends AppCompatActivity {
                 else if(documentSnapshot.getString("Year").equals("FE")){
                     Toast.makeText(UserLogin.this, "Loggedin as FE", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(UserLogin.this, FeDashboard.class));
+                    finish();
+                }
+                else if(documentSnapshot.getString("Year").equals("TE")){
+                    Toast.makeText(UserLogin.this, "Logged in as TE", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(UserLogin.this, TE_Dashboard.class));
                     finish();
                 }
 

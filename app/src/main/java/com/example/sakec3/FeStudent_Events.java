@@ -1,4 +1,4 @@
-package com.example.sakec3.FE;
+package com.example.sakec3;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sakec3.Events.EventsAdapter;
 import com.example.sakec3.Events.Eventsgetset;
+import com.example.sakec3.FeEventsAdapter;
 import com.example.sakec3.R;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;

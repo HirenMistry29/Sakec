@@ -1,4 +1,4 @@
-package com.example.sakec3.FE;
+package com.example.sakec3;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -11,8 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sakec3.Events.Eventsgetset;
-import com.example.sakec3.R;
-import com.example.sakec3.SE.EventHomeAdapter;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 

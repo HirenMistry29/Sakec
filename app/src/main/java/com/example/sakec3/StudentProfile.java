@@ -105,7 +105,7 @@ public class StudentProfile extends AppCompatActivity {
                 else if (id == R.id.logout){
                     FirebaseAuth.getInstance().signOut();
                     startActivity(new Intent(StudentProfile.this , MainActivity.class));
-
+                    finish();
                 }
                 else{
 
@@ -140,8 +140,6 @@ public class StudentProfile extends AppCompatActivity {
             ft.replace(R.id.container , fragment);
         }
         ft.commit();
-
-
     }
 
     public void fetchData(){

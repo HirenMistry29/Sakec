@@ -15,6 +15,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_80pxv"
+            android:paddingBottom="@dimen/_30pxv"
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
@@ -58,6 +60,65 @@
 
 
             </androidx.recyclerview.widget.RecyclerView>
+
+            <LinearLayout
+                android:layout_width="@dimen/_370pxh"
+                android:layout_height="@dimen/_40pxh"
+                android:orientation="vertical"
+                android:background="@drawable/border"
+                android:layout_gravity="center_horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OUR VISION"
+                    android:textSize="@dimen/_25pxh"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:paddingStart="@dimen/_20pxh"
+                    android:paddingTop="5dp"/>
+            </LinearLayout>
+            <TextView
+                android:background="@drawable/blue_line"
+                android:layout_width="@dimen/_370pxh"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/our_vision"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:justificationMode="inter_word"
+                android:padding="@dimen/_10pxh"
+                android:fontFamily="@font/kumbhsans"/>
+
+            <LinearLayout
+                android:layout_width="@dimen/_370pxh"
+                android:layout_height="@dimen/_40pxh"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/_20pxh"
+                android:background="@drawable/border"
+                android:layout_gravity="center_horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OUR MISSION"
+                    android:textSize="@dimen/_25pxh"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:paddingStart="@dimen/_20pxh"
+                    android:paddingTop="5dp"/>
+            </LinearLayout>
+            <TextView
+                android:background="@drawable/blue_line"
+                android:layout_width="@dimen/_370pxh"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/our_mission"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:justificationMode="inter_word"
+                android:padding="@dimen/_10pxh"
+                android:fontFamily="@font/kumbhsans"/>
 
         </LinearLayout>
 

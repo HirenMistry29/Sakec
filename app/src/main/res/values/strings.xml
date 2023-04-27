@@ -18,6 +18,9 @@
     <string name="msg_registration_no">Registration No.</string>
     <string name="smartcard">Smartcard No.</string>
     <string name="msg_please_enter_valid_text">Please enter valid text</string>
+    <string name="our_vision">“To become a globally recognized institution offering quality education and enhancing professional standards”</string>
+    <string name="our_mission">“To impart high-quality technical education to the students by providing an excellent academic environment, well-equipped laboratories and training through the motivated teachers."</string>
+
 
     // Sign In Page
     <string name="email">E-mail</string>

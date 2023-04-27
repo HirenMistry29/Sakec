@@ -1,4 +1,4 @@
-package com.example.sakec3.FE;
+package com.example.sakec3;
 
 import android.os.Bundle;
 
@@ -17,8 +17,6 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.sakec3.Events.EventsAdapter;
 import com.example.sakec3.Events.Eventsgetset;
-import com.example.sakec3.R;
-import com.example.sakec3.SE.EventHomeAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

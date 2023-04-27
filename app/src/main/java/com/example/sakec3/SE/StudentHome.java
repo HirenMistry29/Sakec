@@ -73,6 +73,7 @@ public class StudentHome extends Fragment {
         //        to reverse the recycler view and show the latest post on top
         LinearLayoutManager LayoutMangager = new LinearLayoutManager(getActivity());
         LayoutMangager.setReverseLayout(true);
+//        LayoutMangager.setStackFromEnd(true);
         LayoutMangager.setStackFromEnd(true);
         eventsrecyclerview.setLayoutManager(LayoutMangager);
         eventsrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
