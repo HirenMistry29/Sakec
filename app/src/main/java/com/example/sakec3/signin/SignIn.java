@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.sakec3.R;
-import com.example.sakec3.studentdashboard.StudentProfile;
+import com.example.sakec3.StudentProfile;
 import com.example.sakec3.studentdetails.studentdetails;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;

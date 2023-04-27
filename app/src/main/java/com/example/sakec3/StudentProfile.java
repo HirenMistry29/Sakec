@@ -1,4 +1,4 @@
-package com.example.sakec3.studentdashboard;
+package com.example.sakec3;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -19,12 +19,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sakec3.Events.Student_Events;
-import com.example.sakec3.R;
 import com.example.sakec3.SE.StudentHome;
 import com.example.sakec3.attendance.Attendance;
 import com.example.sakec3.signin.SignIn2;
 import com.example.sakec3.studentchapter.StudentChapter;
-import com.example.sakec3.studentprofiledisplay;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
@@ -106,7 +104,7 @@ public class StudentProfile extends AppCompatActivity {
 
                 else if (id == R.id.logout){
                     FirebaseAuth.getInstance().signOut();
-                    startActivity(new Intent(StudentProfile.this , SignIn2.class));
+                    startActivity(new Intent(StudentProfile.this , MainActivity.class));
 
                 }
                 else{

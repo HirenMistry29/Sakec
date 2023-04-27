@@ -23,7 +23,7 @@
                 android:layout_height="@dimen/_250pxh"
                 app:cardBackgroundColor="@color/white"
                 >
-            
+
                 <com.denzcoskun.imageslider.ImageSlider
                     android:id="@+id/imageslider"
                     android:layout_width="match_parent"
@@ -58,7 +58,7 @@
 
 
             </androidx.recyclerview.widget.RecyclerView>
-            
+
         </LinearLayout>
 
     </ScrollView>

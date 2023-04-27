@@ -1,12 +1,6 @@
 package com.example.sakec3;
 
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -15,10 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
 
-import com.example.sakec3.signin.SignIn;
 import com.example.sakec3.teacher.TeacherLogin;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -38,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Drawable drawable = ResourcesCompat.getDrawable(getResources(),R.drawable.sakeclogo1,null);
-        BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
-        Bitmap largeIcon = bitmapDrawable.getBitmap();
+//
+//        Drawable drawable = ResourcesCompat.getDrawable(getResources(),R.drawable.sakeclogo1,null);
+//        BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
+//        Bitmap largeIcon = bitmapDrawable.getBitmap();
 
 //        NOTIFICATION
 
@@ -78,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         studentsignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this , SignIn.class));
+                startActivity(new Intent(MainActivity.this , UserLogin.class));
                 finish();
             }
         });
@@ -99,6 +92,15 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(new Intent(MainActivity.this, Registration.class));
 //            }
 //        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
+            startActivity(new Intent(MainActivity.this,StudentProfile.class));
+            finish();
+        }
     }
 }
 

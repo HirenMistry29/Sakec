@@ -1,4 +1,4 @@
-package com.example.sakec3.teacher;
+package com.example.sakec3.FE;
 
 import static com.example.sakec3.StudentProfile.drawer;
 import static com.example.sakec3.StudentProfile.navigate;
@@ -17,19 +17,22 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.sakec3.Events.upload_events;
+import com.example.sakec3.MainActivity;
 import com.example.sakec3.R;
 import com.example.sakec3.SE.StudentHome;
 import com.example.sakec3.attendance.admin_attendance;
 import com.example.sakec3.studentchapter.teachersignin;
+import com.example.sakec3.teacher.teacherdashboard;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class teacherdashboard extends AppCompatActivity {
+public class FeDashboard extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.teacherdashboard);
+        setContentView(R.layout.activity_fe_dashboard);
+
         drawer = findViewById(R.id.navigationdrawer);
         navigate = findViewById(R.id.navigate);
         toolbar = findViewById(R.id.toolbar);
@@ -44,14 +47,14 @@ public class teacherdashboard extends AppCompatActivity {
 
         toggle.syncState();
 
-        LoadFragment(new StudentHome(), 0);
+        LoadFragment(new FeStudent_Events(), 0);
 
         navigate.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 if(id == R.id.home){
-                    LoadFragment(new StudentHome(),1);
+                    LoadFragment(new Fe_Home(),1);
                 } else if(id == R.id.Library){
 
                 } else if ( id == R.id.attendance){
@@ -60,14 +63,14 @@ public class teacherdashboard extends AppCompatActivity {
 
                 } else if (id == R.id.studentchapter) {
 //                    LoadFragment(new StudentChapter(),1);
-                        startActivity(new Intent(teacherdashboard.this , teachersignin.class));
+//                    startActivity(new Intent(FeDashboard.this , teachersignin.class));
                 }
                 else if (id== R.id.Events){
-                        LoadFragment(new upload_events(),1);
+                    LoadFragment(new FeStudent_Events(),1);
                 }
                 else if (id == R.id.logout){
                     FirebaseAuth.getInstance().signOut();
-                    startActivity(new Intent(teacherdashboard.this , teachersignin.class));
+                    startActivity(new Intent(FeDashboard.this , MainActivity.class));
 
                 }
                 else{

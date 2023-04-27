@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.sakec3.R;
-import com.example.sakec3.studentdashboard.StudentProfile;
+import com.example.sakec3.StudentProfile;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -128,3 +128,4 @@ public class SignIn2 extends AppCompatActivity {
         startActivityForResult(i, 1234);
     }
 }
+

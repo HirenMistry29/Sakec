@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserRegister"
+    android:background="@color/white">
+
+
+
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="@dimen/_350pxh"
+        android:layout_height="@dimen/_220pxh"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_80pxv"
+       >
+
+        <EditText
+            android:id="@+id/registerName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:autofillHints="name"
+            android:background="@drawable/rectangle_border_black_900_radius_3"
+
+            android:elevation="@dimen/_18pxh"
+            android:hint="FullName"
+            android:paddingStart="@dimen/_10pxh"
+            android:shadowColor="@color/box"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="@dimen/_18pxh" />
+
+        <EditText
+            android:id="@+id/registerEmail"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_10pxh"
+            android:autofillHints="emailAddress"
+            android:background="@drawable/rectangle_border_black_900_radius_3"
+            android:elevation="@dimen/_18pxh"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:paddingStart="@dimen/_10pxh"
+            android:shadowColor="@color/box"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="@dimen/_18pxh" />
+
+        <EditText
+            android:id="@+id/registerPassword"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_10pxh"
+            android:autofillHints="password"
+            android:background="@drawable/rectangle_border_black_900_radius_3"
+            android:elevation="@dimen/_18pxh"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:paddingStart="@dimen/_10pxh"
+            android:shadowColor="@color/box"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="@dimen/_18pxh" />
+
+        <EditText
+            android:id="@+id/registerPhone"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_10pxh"
+            android:autofillHints="phone"
+            android:background="@drawable/rectangle_border_black_900_radius_3"
+            android:elevation="@dimen/_18pxh"
+            android:hint="Phone No."
+            android:inputType="phone"
+            android:maxLength="10"
+            android:paddingStart="@dimen/_10pxh"
+            android:shadowColor="@color/box"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="@dimen/_18pxh" />
+
+        <Spinner
+            android:background="@drawable/rectangle_border_black_900_radius_3"
+            android:ellipsize="end"
+            android:hint="select year"
+            android:textColor="@color/box"
+            android:id="@+id/select_year"
+            android:inputType="text"
+            android:layout_height="@dimen/_50pxh"
+            android:layout_marginEnd="@dimen/_1pxh"
+            android:layout_marginStart="@dimen/_1pxh"
+            android:layout_marginTop="@dimen/_17pxv"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:textColorHint="@color/box"
+            style="@style/etRoundedOutline" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/registerBtn"
+            android:layout_width="@dimen/_380pxh"
+            android:layout_height="@dimen/_40pxh"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/box"
+            android:elevation="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_30pxh"
+            android:text="Create Account"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/goToLogin"
+            android:layout_width="@dimen/_380pxh"
+            android:layout_height="@dimen/_40pxh"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="100dp"
+            android:background="@color/box"
+            android:elevation="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_10pxh"
+            android:text="Login"
+            />
+
+
+    </LinearLayout>
+
+
+
+
+</ScrollView>
